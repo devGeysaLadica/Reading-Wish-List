@@ -64,11 +64,11 @@ public class Book {
 		this.status = status;
 	}
 
-	public Category getCategory() {
+	public CategoryBook getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(CategoryBook category) {
 		this.category = category;
 	}
 
