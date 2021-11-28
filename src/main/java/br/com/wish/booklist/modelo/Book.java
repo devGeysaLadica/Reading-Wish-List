@@ -28,8 +28,7 @@ public class Book {
 
 	}
 
-	public Book(Long id, String title, String author, ReadStatus status, CategoryBook category) {
-		this.id = id;
+	public Book(String title, String author, ReadStatus status, CategoryBook category) {
 		this.title = title;
 		this.author = author;
 		this.status = status;
