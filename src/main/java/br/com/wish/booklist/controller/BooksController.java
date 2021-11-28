@@ -19,8 +19,14 @@ public class BooksController {
 	private BookRepository bookRepository;
 	
 	@GetMapping
-	public List<BookDto> books(String nameCategory){
-		List<Book> books = bookRepository.findAll();
-		return BookDto.convert(books);
+	public List<BookDto> books(String categoryName){
+		if (categoryName == null) {
+			List<Book> books = bookRepository.findAll();
+			return BookDto.convert(books);
+		}else {
+			List<Book> books = bookRepository.findByCategory(categoryName);
+			return BookDto.convert(books);
+		}
+
 	}
 }
