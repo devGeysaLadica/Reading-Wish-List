@@ -1,6 +1,6 @@
-INSERT INTO CATEGORYBOOK (title) VALUES ('Action');
-INSERT INTO CATEGORYBOOK (title) VALUES ('Drama');
-INSERT INTO CATEGORYBOOK (title) VALUES ('Romance');
+INSERT INTO CATEGORY_BOOK (title) VALUES ('Action');
+INSERT INTO CATEGORY_BOOK (title) VALUES ('Drama');
+INSERT INTO CATEGORY_BOOK (title) VALUES ('Romance');
 
 INSERT INTO BOOK (title, author, status, category_id) 
 VALUES ('Termination Shoc', 'Neal Stephenson', 'READ', 1 );

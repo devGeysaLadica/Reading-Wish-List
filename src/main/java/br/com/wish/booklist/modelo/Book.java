@@ -23,6 +23,10 @@ public class Book {
 	
 	@ManyToOne
 	private CategoryBook category;
+	
+	public Book() {
+
+	}
 
 	public Book(Long id, String title, String author, ReadStatus status, CategoryBook category) {
 		this.id = id;
