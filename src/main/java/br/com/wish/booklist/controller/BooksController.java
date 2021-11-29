@@ -1,13 +1,16 @@
 package br.com.wish.booklist.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.wish.booklist.controller.dto.BookDto;
 import br.com.wish.booklist.controller.form.BookForm;
@@ -40,9 +43,12 @@ public class BooksController {
 	 * BookForm is a DTO that contains the new book information inserted by client.
 	 */
 	@PostMapping
-	public void registerBook(@RequestBody BookForm bookForm) {
-		Book newbook = bookForm.convert(categoryRepository);
-		bookRepository.save(newbook);
+	public ResponseEntity<BookDto> registerBook(@RequestBody BookForm bookForm, UriComponentsBuilder uriBuilder) {
+		Book newBook = bookForm.convert(categoryRepository);
+		bookRepository.save(newBook);
+		
+		URI uri = uriBuilder.path("/books/{id}").buildAndExpand(newBook.getId()).toUri();
+		return ResponseEntity.created(uri).body(new BookDto(newBook));
 	}
 	
 }
